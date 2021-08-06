@@ -53,7 +53,7 @@ module "assert_role_present" {
   source        = "Invicton-Labs/assertion/null"
   version       = "0.2.1"
   condition     = var.lambda_role_arn != null || length(var.lambda_role_policies_json) > 0 || length(var.lambda_role_policy_arns) > 0 || local.caller_role_arn != null
-  error_message = "One of the `lambda_role_arn`, `lambda_role_policies_json`, or `lambda_role_policy_arns` input parameters must be provided, or this module must be called from a Terraform configuration that has assumed a role (${local.caller_role_arn})."
+  error_message = "One of the `lambda_role_arn`, `lambda_role_policies_json`, or `lambda_role_policy_arns` input parameters must be provided, or this module must be called from a Terraform configuration that has assumed a role."
 }
 module "assert_single_body" {
   source        = "Invicton-Labs/assertion/null"
