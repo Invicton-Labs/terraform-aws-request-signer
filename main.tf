@@ -13,13 +13,14 @@ module "signer_lambda" {
     module.assert_role_present.checked,
     module.assert_single_body.checked
   ]
-  source                   = "Invicton-Labs/lambda-set/aws"
-  version                  = "0.4.1"
-  edge                     = false
-  source_directory         = "${path.module}/lambda"
-  archive_output_directory = "${path.module}/archives/"
+  source  = "Invicton-Labs/lambda-set/aws"
+  version = "0.4.1"
+  edge    = false
+  //source_directory         = "${path.module}/lambda"
+  //archive_output_directory = "${path.module}/archives/"
   lambda_config = {
     function_name = "invicton-labs-aws-request-signer-${random_id.lambda.hex}"
+    filename      = "${path.module}/lambda.zip"
     handler       = "main.lambda_handler"
     runtime       = "python3.8"
     timeout       = 10
